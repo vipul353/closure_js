@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Closure</title>
+  </head>
+  <body>
+    <div class="heading">
+      <div class="text">Closure</div>
+    </div>
+    <hr />
+    <h3>Q1. give output.</h3>
+    <h4>Ans:-</h4>
+    <pre>
+        "let count = 0;
+        (function () {
+          if (count === 0) {
+            let count = 1;
+            console.log(count); // What is logged?
+          }
+          console.log(count); // What is logged?
+        })();"
+  </pre
+    >
+    <h4>Output:-1,0</h4>
+    <h4>explanation:-</h4>
+    <p>
+      The code initializes a variable "count" as 0. Within a function, if
+      "count" equals 0, a new local variable "count" is created with a value of
+      1, and it is printed. Later, the original "count" variable is printed. The
+      purpose is to demonstrate variable scoping in JavaScript. The output will
+      be 1 followed by 0, illustrating that the local variable inside the
+      function does not affect the outer variable.
+    </p>
+    <hr />
+    <h3>Q2. give output.</h3>
+    <h4>Ans:-</h4>
+    <pre>
+        "let count = 0;
+        (function () {
+          if (count === 0) {
+            let count = 1;
+            console.log(count); // What is logged?
+          }
+          console.log(count); // What is logged?
+        })();"
+  </pre
+    >
+    <h4>Output:-3 3 3</h4>
+    <h4>explanation:-</h4>
+    <p>
+      The output of the code will be "3" logged three times, with a delay of 1
+      second between each log. This happens because the variable "i" is declared
+      with the "var" keyword, which has function scope, not block scope. By the
+      time the setTimeout function is executed, the loop has already completed,
+      and the final value of "i" is 3. Therefore, when the log function is
+      invoked, it references the final value of "i" in each iteration
+    </p>
+    <hr />
+    <h3>
+      Q3.Write a code to calculate area of a rectangle using inner function. In
+      this case outer function should accept parameter length and inner function
+      should accept parameter breadth.
+    </h3>
+    <h4>Ans:-</h4>
+    <pre>
+        function calculateRectangleArea(length) {
+            function calculateArea(breadth) {
+              return length * breadth;
+            }
+            
+            return calculateArea;
+          }
+          
+          const rectangleArea = calculateRectangleArea(5);
+          console.log(rectangleArea(8)); // Output: 40
+          
+  </pre
+    >
+    <h4>Output:-3 3 3</h4>
+    <h4>explanation:-</h4>
+    <p>
+      In this code, the outer function calculateRectangleArea accepts the
+      parameter length and defines an inner function calculateArea that accepts
+      the parameter breadth. The inner function multiplies the length and
+      breadth to calculate the area. The outer function returns the inner
+      function calculateArea itself. By invoking calculateRectangleArea with a
+      specific length value, we get the calculateArea function as the result. We
+      can then call calculateArea with the desired breadth value to calculate
+      the area of the rectangle
+    </p>
+    <hr />
+    <h3>
+      Q5.Take a variable in outer function and create an inner function to
+      increase the counter every time it is called
+    </h3>
+    <h4>Ans:-</h4>
+    <pre>
+        function counter() {
+            let count = 0;
+          
+            function increaseCounter() {
+              count++;
+              console.log(count);
+            }
+          
+            return increaseCounter;
+          }
+          
+          const increase = counter();
+          increase(); // Output: 1
+          increase(); // Output: 2
+          increase(); // Output: 3
+          
+          
+  </pre
+    >
+    <h4>Output:-1 2 3</h4>
+    <h4>explanation:-</h4>
+    <p>
+      In this code, the outer function counter initializes a variable count to
+      0. It defines an inner function increaseCounter that increments the count
+      variable by 1 and logs its value to the console. The outer function then
+      returns the inner function increaseCounter. By invoking the outer function
+      and assigning it to the increase variable, we obtain the increaseCounter
+      function. Each time we call increase(), it increases the counter and logs
+      the updated value.
+    </p>
+    <hr />
+    <h3>Q6.Print output.</h3>
+    <h4>Ans:-</h4>
+    <pre>
+        var a = 12;
+        (function () {
+          alert(a);
+        })();
+          
+          
+  </pre
+    >
+    <h4>Output:-12</h4>
+    <h4>explanation:-</h4>
+    <p>
+      The output of the code will be an alert displaying the value of the
+      variable "a", which is 12..
+    </p>
+    <hr />
+    <h3>Q7.Print output.</h3>
+    <h4>Ans:-</h4>
+    <pre>
+        var a = 10;
+        var x = (function () {
+          var a = 12;
+          return function () {
+            alert(a);
+          };
+        })();
+        x()
+          
+          
+  </pre
+    >
+    <h4>Output:-12</h4>
+    <h4>explanation:-</h4>
+    <p>
+      The code assigns the value 10 to the variable "a". Inside a function, a
+      new variable "a" is assigned the value 12, and a function is returned.
+      When this function is called with "x()", it alerts the inner "a" value of
+      12
+    </p>
+    <hr />
+    <h3>Q8.Print output.</h3>
+    <h4>Ans:-</h4>
+    <pre>
+        var globalVar = ""xyz"";
+
+        (function outerFunc(outerArg) {
+            var outerVar = 'a';
+            
+            (function innerFunc(innerArg) {
+            var innerVar = 'b';
+            
+            console.log(
+                ""outerArg = "" + outerArg + ""\n"" +
+                ""innerArg = "" + innerArg + ""\n"" +
+                ""outerVar = "" + outerVar + ""\n"" +
+                ""innerVar = "" + innerVar + ""\n"" +
+                ""globalVar = "" + globalVar);
+            
+            })(456);
+        })(123);
+          
+          
+  </pre
+    >
+    <h4>
+      Output:-outerArg = 123 innerArg = 456 outerVar = a innerVar = b globalVar
+      = xyz
+    </h4>
+    <h4>explanation:-</h4>
+    <p>
+      The code defines an outer function named "outerFunc" with an argument
+      "outerArg" and an inner variable "outerVar". Inside "outerFunc", there is
+      an inner function named "innerFunc" with an argument "innerArg" and an
+      inner variable "innerVar". The console.log statement prints the values of
+      the arguments and variables. The output shows the values of "outerArg",
+      "innerArg", "outerVar", "innerVar", and "globalVar" (which is "xyz").
+    </p>
+  </body>
+</html>
